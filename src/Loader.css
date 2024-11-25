@@ -1,0 +1,13 @@
+.loader-container {
+    height: 100vh;
+    background-color: rgb(135, 180, 196);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#text {
+    font-size: 40px;
+    font-weight: 400;
+    font-family: Arial, Helvetica, sans-serif;
+}

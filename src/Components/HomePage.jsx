@@ -1,7 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "/src/HomePage.css";
 
 const HomePage = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const slides = [
+        {
+            image: "src/assets/slider1.png",
+            text1: "Get a link that you can share",
+            text2: "Click New Meeting to get a link that you can send to people",
+        },
+        {
+            image: "src/assets/slider2.png",
+            text1: "Your meeting is safe",
+            text2: "No one can join a meeting unless invited or admitted by the host",
+        },
+    ];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     return (
         <>
             <div className="container">
@@ -9,7 +31,7 @@ const HomePage = () => {
                     <img src="src/assets/logo.png" alt="logo" width="50px" height="50px" />
                     <div>
                         <h1 className="logo">HUDDLE HUB</h1>
-                        <p className="logo">- LET US CONNECT -</p>
+                        <p className="logo logo-subtext">- LET US CONNECT -</p>
                     </div>
                 </div>
                 <div className="content">
@@ -17,26 +39,32 @@ const HomePage = () => {
                         <h1>Video calls and meetings <br /> for everyone</h1>
                         <p><span>Connect, collaborate and celebrate from <br />
                             anywhere with Huddle Hub</span></p>
-                        <button> <img src="src/assets/meet.svg" /> New Meeting</button>
-                        <button>
-                            <img src='src/assets/link.svg' alt='link svg' />
-                            <input className='link-input' type='text' placeholder='Enter meet Link' />
-                        </button>
-                    </div>
-                    {/* <div class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="src/assets/slider1.png" class="d-block w-100" alt="slider-image" />
-                            </div>
-                            <div class="carousel-item">
-                                <img src="src/assets/slider2.png" class="d-block w-100" alt="slider-image" />
-                            </div>
+                        <div className="buttons">
+                            <button className="meet-button"> <img src="src/assets/meet.svg" /> New Meeting</button>
+                            <button className="link-button">
+                                <img src='src/assets/link.svg' alt='link svg' />
+                                <input className='link-input' type='text' placeholder='Enter meet Link' />
+                            </button>
+                            <button className="join-button">Join</button>
                         </div>
-                    </div> */}
+                    </div>
+                    <div className="carousel">
+                        {slides.map((slide, index) => (
+                            <div
+                                className={`carousel-item ${index === currentIndex ? 'active' : ''}`}
+                                key={index}
+                                style={{ display: index === currentIndex ? 'block' : 'none' }}
+                            >
+                                <img className="slider-image" src={slide.image} alt="slider-image" />
+                                <p className="slider-text1">{slide.text1}</p>
+                                <p className="slider-text2">{slide.text2}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </>
-    )
+    );
 };
 
 export default HomePage;

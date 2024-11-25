@@ -1,5 +1,6 @@
 import './App.css'
 import HomePage from './Components/HomePage'
+// import Loader from './Components/Loader'
 
 function App() {
 
