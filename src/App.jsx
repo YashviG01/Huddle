@@ -1,14 +1,15 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Loginform from "./Components/Loginform";
 import ResetPassword from "./Components/ResetPassword";
-
+import NewPassword from "./Components/Newpassword";
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Loginform />} />
         <Route path="/ResetPassword" element={<ResetPassword />} />
-        <Route path="/dashboard" element={<dashboard />} />
+        <Route path="/Newpassword" element={<NewPassword />} />
+        {/* <Route path="/dashboard" element={<dashboard />} /> */}
       </Routes>
     </Router>
   );

@@ -1,14 +1,19 @@
-import  { useState } from "react";
-import "./App.css";
-import illustration from "./reset.png"; // Replace with the correct path to your image
+import { useState } from "react";
+import "./Newpassword.css";
+import illustration from "../assets/reset.png"; // Replace with the correct path to your image
+import { useSearchParams } from "react-router-dom";
+import axios from "axios";
 
 function App() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [searchParams] = useSearchParams();
 
-  const handleSubmit = (e) => {
+  const token = searchParams.get("token");
+
+  const handleSubmit = async (e) => { // Mark this function as async
     e.preventDefault();
 
     setError("");
@@ -27,9 +32,28 @@ function App() {
       return;
     }
 
-    setSuccess(true);
-    setPassword("");
-    setConfirmPassword("");
+    try {
+      const response = await axios.post(
+        "https://huddlehub-75fx.onrender.com/newpassword",
+        { password, token }, // Send new password and token
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        setSuccess(true);
+        setPassword("");
+        setConfirmPassword("");
+      } else {
+        setError("Unexpected error occurred. Please try again.");
+      }
+    } catch (err) {
+      console.error("Error details:", err.response || err.message);
+      setError(err.response?.data?.message || "Failed to reset password.");
+    }
   };
 
   return (

@@ -3,14 +3,14 @@ import axios from "axios";
 import image from "../assets/image.png";
 import { Link } from "react-router-dom";
 import "../App.css";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+//   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -32,7 +32,7 @@ const LoginForm = () => {
       console.log("Login successful:", response.data);
       localStorage.setItem("authToken", response.data.token);
       console.log("token:",response.data.token)
-      navigate("/dashboard");
+    //   navigate("/dashboard");
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
       setError(error.response?.data?.message || "An error occurred.");

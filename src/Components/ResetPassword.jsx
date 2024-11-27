@@ -25,15 +25,23 @@ const ResetPassword = () => {
     //       setLoading(false);
     //       return;
     //     }
-    try{
+    try {
+        const token = localStorage.getItem("authToken");
+  console.log(token);
+        if (!token) {
+          setError("Authentication token not found. Please log in again.");
+          setLoading(false);
+          return;
+        }
   
         const response = await axios.post(
-         "https://huddlehub-75fx.onrender.com/reset/",
+        `https://huddlehub-75fx.onrender.com/reset/${token}`,
           { email },
           {
             headers: {
               "Content-Type": "application/json",
             //   "X-API-Key": ,
+            // Authorization: `Bearer ${token}`,
             },
           }
        
