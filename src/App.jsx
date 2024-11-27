@@ -8,6 +8,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Loginform />} />
         <Route path="/ResetPassword" element={<ResetPassword />} />
+        <Route path="/dashboard" element={<dashboard />} />
       </Routes>
     </Router>
   );
