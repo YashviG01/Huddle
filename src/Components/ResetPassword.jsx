@@ -30,9 +30,13 @@ const ResetPassword = () => {
         const response = await axios.post(
          "https://huddlehub-75fx.onrender.com/reset/",
           { email },
-        //   {
-        //     headers: { "X-API-Key": "your_api_key_here" }
-        //   }
+          {
+            headers: {
+              "Content-Type": "application/json",
+              "X-API-Key": "your_api_key_here",
+            },
+          }
+       
         );
   
         if (response.status === 200) {
