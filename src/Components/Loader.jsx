@@ -6,6 +6,7 @@ const Loader = () => {
     return (
         <>
             <div class="loader-container">
+                <div className="loader"></div>
                 <p id="text">Loading...</p>
             </div>
         </>

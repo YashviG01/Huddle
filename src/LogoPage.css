@@ -1,0 +1,40 @@
+body {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular';
+    background-image: url('/src/assets/Background.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 97vh;
+    overflow: hidden;
+}
+
+.logo-div {
+    display: flex;
+    gap: 1px;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-div h1,
+p {
+    margin: 0%;
+}
+
+.logo {
+    font-size: 50px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logo-subtext {
+    font-size: 25px;
+    padding-left: 30px;
+}
