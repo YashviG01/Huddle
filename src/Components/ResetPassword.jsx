@@ -33,7 +33,7 @@ const ResetPassword = () => {
           {
             headers: {
               "Content-Type": "application/json",
-              "X-API-Key": "your_api_key_here",
+            //   "X-API-Key": ,
             },
           }
        
