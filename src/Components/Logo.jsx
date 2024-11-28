@@ -9,7 +9,7 @@ const Logo = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             navigate("/signup");
-        }, 3000);
+        }, 5000);
         return () => clearTimeout(timer);
     }, [navigate]);
 

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "/src/SignUp.css";
 
 const SignUp = () => {
-
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -38,6 +37,7 @@ const SignUp = () => {
         }
     };
 
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
@@ -59,7 +59,6 @@ const SignUp = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "X-API-Key": "PMAK-673f7cab0ad2190001793d55-801aed09b0afc490fa5d1e0a645d79890c",
                 },
                 body: JSON.stringify(formData),
             });
@@ -85,6 +84,8 @@ const SignUp = () => {
         }
     };
 
+
+    // Toggle visibility of passwords
     const togglePasswordVisibility = () => {
         setPasswordVisible((prevState) => !prevState);
     };
@@ -98,11 +99,16 @@ const SignUp = () => {
                     <p className="logo logo-subtext">- LET US CONNECT -</p>
                 </div>
             </div>
+
             <div className="signup-container">
                 <form className="signup-form" onSubmit={handleSubmit}>
                     <h2>Create An Account</h2>
+
+                    {/* Display error or success messages */}
                     {error && <p className="error">{error}</p>}
                     {success && <p className="success">{success}</p>}
+
+                    {/* Input fields for user data */}
                     <div className="form-group">
                         <input
                             type="text"
@@ -165,28 +171,28 @@ const SignUp = () => {
                         <button type="button" className="toggle-password-btn" onClick={togglePasswordVisibility}>
                             {passwordVisible ? 'Hide Passwords' : 'Show Passwords'}
                         </button>
-                        <div className="form-group checkbox">
-                            <input
-                                type="checkbox"
-                                name="termsAccepted"
-                                checked={formData.termsAccepted}
-                                onChange={handleChange}
-                            />
-                            <label>
-                                I agree to the <a href="/terms">Terms of Service</a> and{" "}
-                                <a href="/privacy">Privacy Policy</a>.
-                            </label>
-                        </div>
-                        <button type="submit" disabled={loading}>
-                            {loading ? "Signing Up..." : "Sign Up"}
-                        </button>
                     </div>
+                    <div className="form-group checkbox">
+                        <input
+                            type="checkbox"
+                            name="termsAccepted"
+                            checked={formData.termsAccepted}
+                            onChange={handleChange}
+                        />
+                        <label>
+                            I agree to the <a href="/terms">Terms of Service</a> and{" "}
+                            <a href="/privacy">Privacy Policy</a>.
+                        </label>
+                    </div>
+
+                    {/* Submit button */}
+                    <button type="submit" disabled={loading}>
+                        {loading ? "Signing Up..." : "Sign Up"}
+                    </button>
                 </form>
             </div>
-
         </>
-    )
-
+    );
 };
 
 export default SignUp;
