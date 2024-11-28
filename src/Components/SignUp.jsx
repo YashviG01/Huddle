@@ -1,6 +1,6 @@
-import { useState } from "react";
-import "/src/SignUp.css";
+import { useState} from "react";
 import { useNavigate } from "react-router-dom";
+import "/src/SignUp.css";
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
@@ -18,6 +18,8 @@ const SignUp = () => {
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
     const [passwordStrength, setPasswordStrength] = useState("");
+
+    const navigate = useNavigate();
 
     const validatePassword = (password) => {
         if (password.length < 6) return "Weak";
@@ -55,8 +57,7 @@ const SignUp = () => {
             return;
         }
 
-        setLoading(true); // Set loading state to true
-
+        setLoading(true);
         try {
             // Sending data to the server with POST request
             const response = await fetch("https://huddlehub-75fx.onrender.com/signup/", {

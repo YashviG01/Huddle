@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "/src/HomePage.css";
-
+import { useNavigate } from "react-router-dom";
 const HomePage = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const navigate = useNavigate();
     const slides = [
         {
             image: "src/assets/slider1.png",
@@ -24,6 +25,10 @@ const HomePage = () => {
         return () => clearInterval(interval);
     }, []);
 
+    const handleNewMeeting = () => {
+        navigate("/Redirect");
+    };
+
     return (
         <>
             <div className="container">
@@ -40,8 +45,9 @@ const HomePage = () => {
                         <p><span>Connect, collaborate and celebrate from <br />
                             anywhere with Huddle Hub</span></p>
                         <div className="buttons">
-                            <button className="meet-button"> <img src="src/assets/meet.svg" /> New Meeting</button>
-                            <button className="link-button">
+                        <button className="meet-button" onClick={handleNewMeeting}> 
+                        <img src="src/assets/meet.svg" alt="new meeting icon" /> New Meeting
+                        </button>                           <button className="link-button">
                                 <img src='src/assets/link.svg' alt='link svg' />
                                 <input className='link-input' type='text' placeholder='Enter meet Link' />
                             </button>

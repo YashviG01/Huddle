@@ -1,0 +1,118 @@
+/* General Styles */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Top Bar */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 10px 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .meeting-info h3 {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .host-name {
+    margin-right: 15px;
+    font-weight: bold;
+  }
+  
+  .leave-btn {
+    background-color: red;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .leave-btn:hover {
+    opacity: 0.9;
+  }
+  
+  /* Video Grid */
+  .video-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #e5e5e5;
+  }
+  
+  .thumbnails {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #f4f4f4;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .thumbnail img {
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+  }
+  
+  .main-video {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .main-video img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+  }
+  
+  /* Control Bar */
+  .control-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    border-top: 1px solid #ccc;
+  }
+  
+  .control-btn {
+    background-color: #fff;
+    border: none;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+  }
+  
+  .control-btn:hover {
+    background-color: #ddd;
+  }
+  
+  .leave-btn {
+    background-color: red;
+    color: white;
+  }
+  
+  .leave-btn:hover {
+    opacity: 0.9;
+  }
+  
