@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "/src/HomePage.css";
 import { useNavigate } from "react-router-dom";
+
+import logo from "./../assets/logo.png"
 const HomePage = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const navigate = useNavigate();
@@ -33,7 +35,7 @@ const HomePage = () => {
         <>
             <div className="container">
                 <div className="logo-div">
-                    <img src="src/assets/logo.png" alt="logo" width="50px" height="50px" />
+                    <img src={logo} alt="logo" width="50px" height="50px" />
                     <div>
                         <h1 className="logo">HUDDLE HUB</h1>
                         <p className="logo logo-subtext">- LET US CONNECT -</p>
