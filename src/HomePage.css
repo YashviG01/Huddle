@@ -1,0 +1,150 @@
+body {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    background-color: rgb(224, 224, 239);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular';
+}
+
+.logo-div {
+    margin: 20px;
+    display: flex;
+    gap: 1px;
+}
+
+.logo-div h1,
+p {
+    margin: 0%;
+}
+
+.logo {
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.logo-subtext {
+    font-size: 17px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin: 0%;
+    padding: 0%;
+}
+
+.content {
+    display: flex;
+    gap: 12rem;
+}
+
+.description {
+    margin-left: 6em;
+    margin-top: 2em;
+    font-size: 25px;
+}
+
+.description .meet-button {
+    background-color: rgb(118, 118, 223);
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 20px;
+    margin-right: 4px;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.buttons {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.link-button {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 20px;
+    margin-right: 4px;
+    border: 1px solid rgb(151, 149, 149);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.link-input {
+    border: none;
+    height: 30px;
+    background-color: whitesmoke;
+    outline: none;
+    font-size: 16px;
+}
+
+::placeholder {
+    color: rgb(83, 82, 82);
+    opacity: 1;
+}
+
+.join-button {
+    background-color: rgb(224, 224, 239);
+    border: none;
+    color: rgb(190, 97, 113);
+    font-size: 18px;
+    align-self: center;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+span {
+    color: rgb(189, 104, 118);
+}
+
+h1 {
+    font-weight: 200;
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item {
+    transition: opacity 0.5s ease-in-out;
+    display: none;
+}
+
+.carousel-item.active {
+    display: block;
+}
+
+.slider-image {
+    margin-left: 8rem;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    border: 1px solid rgb(165, 165, 165);
+}
+
+.slider-text1 {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.slider-text2 {
+    margin-top: 20px;
+    font-size: 18px;
+    text-align: center;
+    font-weight: lighter;
+}

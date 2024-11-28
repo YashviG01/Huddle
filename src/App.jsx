@@ -1,18 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Loginform from "./Components/Loginform";
-import ResetPassword from "./Components/ResetPassword";
-import NewPassword from "./Components/Newpassword";
+import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from './Components/HomePage'
+import Loader from './Components/Loader'
+import Api from './Components/Api'
+import Logo from './Components/Logo'
+import SignUp from './Components/SignUp'
+
 function App() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Loginform />} />
-        <Route path="/ResetPassword" element={<ResetPassword />} />
-        <Route path="/Newpassword" element={<NewPassword />} />
-        {/* <Route path="/dashboard" element={<dashboard />} /> */}
+        <Route exact path="/" element={<Logo />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
-    </Router>
-  );
+    </BrowserRouter >
+  )
 }
 
 export default App;

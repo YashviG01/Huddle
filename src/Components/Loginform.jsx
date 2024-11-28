@@ -32,7 +32,7 @@ const LoginForm = () => {
       console.log("Login successful:", response.data);
       localStorage.setItem("authToken", response.data.token);
       console.log("token:",response.data.token)
-    //   navigate("/dashboard");
+  
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
       setError(error.response?.data?.message || "An error occurred.");
