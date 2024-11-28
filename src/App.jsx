@@ -1,16 +1,16 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomePage from './Components/HomePage";
+import HomePage from "./Components/HomePage";
 import Redirect from "./Components/Redirect";
 import VideoRoom from "./Components/VideoRoom";
 import Logo from './Components/Logo'
 import SignUp from './Components/SignUp'
 import Meeting from './Components/Meeting';
-import Newpassword from './Components/Newpassword'
-import Resetpassword from './Components/Resetpassword'
+import Newpassword from './Components/Newpassword';
+import Resetpassword from './Components/ResetPassword';
 import Loginform from './Components/Loginform'
-import Loader from './Components/Loader'
-import Api from './Components/Api'
+// import Loader from './Components/Loader'
+// import Api from './Components/Api'
 
 function App() {
   return (
