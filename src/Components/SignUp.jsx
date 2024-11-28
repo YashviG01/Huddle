@@ -37,7 +37,6 @@ const SignUp = () => {
         }
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError("");
@@ -67,6 +66,26 @@ const SignUp = () => {
                 throw new Error("Signup failed. Please try again.");
             }
 
+            // Retrieve existing users from localStorage
+            const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+
+            // Add new user to the existing list
+            const newUser = {
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email,
+                phone: formData.phone,
+                password: formData.password, // Ideally, password should be hashed before storing
+            };
+
+            // Add new user to users list
+            existingUsers.push(newUser);
+            console.log(response);
+
+
+            // Save updated users list back to localStorage
+            localStorage.setItem("users", JSON.stringify(existingUsers));
+
             setSuccess("Signup successful! Welcome to HuddleHub.");
             setFormData({
                 firstName: "",
@@ -84,8 +103,6 @@ const SignUp = () => {
         }
     };
 
-
-    // Toggle visibility of passwords
     const togglePasswordVisibility = () => {
         setPasswordVisible((prevState) => !prevState);
     };
@@ -104,11 +121,9 @@ const SignUp = () => {
                 <form className="signup-form" onSubmit={handleSubmit}>
                     <h2>Create An Account</h2>
 
-                    {/* Display error or success messages */}
                     {error && <p className="error">{error}</p>}
                     {success && <p className="success">{success}</p>}
 
-                    {/* Input fields for user data */}
                     <div className="form-group">
                         <input
                             type="text"

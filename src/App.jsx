@@ -5,6 +5,7 @@ import HomePage from './Components/HomePage'
 // import Api from './Components/Api'
 import Logo from './Components/Logo'
 import SignUp from './Components/SignUp'
+import Meeting from './Components/Meeting';
 import Loginform from './Components/Loginform'
 import Newpassword from './Components/Newpassword'
 import Resetpassword from './Components/Resetpassword '
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Logo />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path='/meeting' element={<Meeting />} />
         <Route path="/Loginform " element={<Loginform  />} />
         <Route path="Resetpassword" element={<Resetpassword />} />
         <Route path="/Newpassword" element={<Newpassword/>} />
