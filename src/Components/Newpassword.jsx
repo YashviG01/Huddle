@@ -1,10 +1,10 @@
 import { useState } from "react";
-import "../Newpassword.css";
+import "/src/Newpassword.css";
 import illustration from "../assets/reset.png"; // Replace with the correct path to your image
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 
-function App() {
+function Newpassword() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -93,4 +93,4 @@ function App() {
   );
 }
 
-export default App;
+export default Newpassword;

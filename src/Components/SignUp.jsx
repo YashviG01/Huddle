@@ -4,10 +4,10 @@ import "/src/SignUp.css";
 
 const SignUp = () => {
     const [formData, setFormData] = useState({
-        firstName: "",
-        lastName: "",
+        first_name: "",
+        last_name: "",
         email: "",
-        phone: "",
+        phone_number: "",
         password: "",
         confirmPassword: "",
         termsAccepted: false,
@@ -42,102 +42,91 @@ const SignUp = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError("");
-        setSuccess("");
+        setError(""); // Reset error
+        setSuccess(""); // Reset success message
 
+        // Check if passwords match
         if (formData.password !== formData.confirmPassword) {
             setError("Passwords do not match.");
             return;
         }
 
+        // Check if terms are accepted
         if (!formData.termsAccepted) {
             setError("You must accept the Terms of Service.");
             return;
         }
 
         setLoading(true);
-
-
-
-
-
-
-
-
-
-
-
-
         try {
-            const response = await fetch('https://huddlehub-75fx.onrender.com/signup/', {
+            // Sending data to the server with POST request
+            const response = await fetch("https://huddlehub-75fx.onrender.com/signup/", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json", // Ensure we are sending JSON data
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    first_name: formData.first_name,
+                    last_name: formData.last_name,
+                    email: formData.email,
+                    phone_number: formData.phone_number, // Use the correct key
+                    password: formData.password,
+                    confirmPassword: formData.confirmPassword,
+                    termsAccepted: formData.termsAccepted,
+                }), // Send the form data as JSON
             });
 
+            // Check if the response is OK
             if (!response.ok) {
                 throw new Error("Signup failed. Please try again.");
             }
 
-            // Retrieve existing users from localStorage
-            const existingUsers = JSON.parse(localStorage.getItem("users")) || [];
+            // Parse the response to get the data
+            const datas = await response.json();
 
-            // Add new user to the existing list
-            const newUser = {
-                firstName: formData.firstName,
-                lastName: formData.lastName,
-                email: formData.email,
-                phone: formData.phone,
-                password: formData.password, // Ideally, password should be hashed before storing
-            };
+            // Log the response to debug the structure
+            console.log("Response data:", datas);
 
-            // Add new user to users list
-            existingUsers.push(newUser);
-            console.log(response);
+            // Ensure the token exists in the response before accessing it
+            if (datas && datas.data) {
+                const token = datas.data.token;
+                localStorage.setItem("authToken", token);
 
+                // Optionally save user email/password to localStorage (if needed)
+                localStorage.setItem("userEmail", formData.email);
+                localStorage.setItem("userPassword", formData.password);
 
-            // Save updated users list back to localStorage
-            localStorage.setItem("users", JSON.stringify(existingUsers));
+                console.log("Signup successful!");
 
-            setSuccess("Signup successful! Welcome to HuddleHub.");
-            setFormData({
-                firstName: "",
-                lastName: "",
-                email: "",
-                phone: "",
-                password: "",
-                confirmPassword: "",
-                termsAccepted: false,
-            });
-        } 
-        
-        
-        
-        
-        
-        
-        
+                setSuccess("Signup successful! You are now logged in.");
 
-
-
-
-
-
-
-        
-        
-        catch (err) {
-            setError(err.message);
+                // Clear the form
+                setFormData({
+                    first_name: "",
+                    last_name: "",
+                    email: "",
+                    phone_number: "",
+                    password: "",
+                    confirmPassword: "",
+                    termsAccepted: false,
+                });
+            }
+        } catch (err) {
+            setError(err.message); // Set error if there is one
         } finally {
-            setLoading(false);
+            setLoading(false); // Reset loading state
         }
     };
 
     const togglePasswordVisibility = () => {
         setPasswordVisible((prevState) => !prevState);
     };
+
+    const navigate = useNavigate();
+
+    const redirect = () => {
+        navigate("/HomePage");
+    }
 
     return (
         <>
@@ -159,18 +148,18 @@ const SignUp = () => {
                     <div className="form-group">
                         <input
                             type="text"
-                            name="firstName"
+                            name="first_name"
                             placeholder="First Name"
-                            value={formData.firstName}
+                            value={formData.first_name}
                             onChange={handleChange}
                             required
                             autoFocus
                         />
                         <input
                             type="text"
-                            name="lastName"
+                            name="last_name"
                             placeholder="Last Name"
-                            value={formData.lastName}
+                            value={formData.last_name}
                             onChange={handleChange}
                             required
                         />
@@ -186,9 +175,9 @@ const SignUp = () => {
                         />
                         <input
                             type="tel"
-                            name="phone"
+                            name="phone_number"
                             placeholder="Phone Number"
-                            value={formData.phone}
+                            value={formData.phone_number} // Use the correct key for phone number
                             onChange={handleChange}
                             required
                         />
@@ -215,8 +204,12 @@ const SignUp = () => {
                             onChange={handleChange}
                             required
                         />
-                        <button type="button" className="toggle-password-btn" onClick={togglePasswordVisibility}>
-                            {passwordVisible ? 'Hide Passwords' : 'Show Passwords'}
+                        <button
+                            type="button"
+                            className="toggle-password-btn"
+                            onClick={togglePasswordVisibility}
+                        >
+                            {passwordVisible ? "Hide Passwords" : "Show Passwords"}
                         </button>
                     </div>
                     <div className="form-group checkbox">
@@ -233,7 +226,7 @@ const SignUp = () => {
                     </div>
 
                     {/* Submit button */}
-                    <button type="submit" disabled={loading}>
+                    <button type="submit" disabled={loading} onClick={redirect}>
                         {loading ? "Signing Up..." : "Sign Up"}
                     </button>
                 </form>
