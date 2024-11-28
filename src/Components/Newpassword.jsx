@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Newpassword.css";
+import "../Newpassword.css";
 import illustration from "../assets/reset.png"; // Replace with the correct path to your image
 import { useSearchParams } from "react-router-dom";
 import axios from "axios";

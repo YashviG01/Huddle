@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import image from "../assets/image.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import "../App.css";
 // import { useNavigate } from "react-router-dom";
 
@@ -10,7 +10,9 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-//   const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
