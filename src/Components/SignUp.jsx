@@ -122,7 +122,6 @@ const SignUp = () => {
         setPasswordVisible((prevState) => !prevState);
     };
 
-    const navigate = useNavigate();
 
     const redirect = () => {
         navigate("/HomePage");
